@@ -1,31 +1,30 @@
+// Define the function that checks the answer
 function checkAnswer() {
-    // Set the correct answer
-    const correctAnswer = "4";
+    const correctAnswer = "4"; // Correct answer
 
-    // Get the selected radio button
+    // Retrieve the selected answer
     const selectedOption = document.querySelector('input[name="quiz"]:checked');
+    const feedback = document.getElementById("feedback");
 
-    // Get feedback element
-    const feedback = document.getElementById("feedback")
-    // If nothing is selected
     if (!selectedOption) {
-        feedback.textContent = "Please select an answer before submitting.";
-        feedback.style.color = "#dc3545"; // Optional: red feedback for no selection
+        // If no option is selected
+        feedback.textContent = "Please select an answer.";
+        feedback.style.color = "#dc3545";
         return;
     }
 
-    // Get user's answer
     const userAnswer = selectedOption.value;
 
-    // Check if the answer is correct
+    // Compare answers and provide feedback
     if (userAnswer === correctAnswer) {
         feedback.textContent = "Correct! Well done.";
-        feedback.style.color = "#28a745"; // Optional: green feedback
+        feedback.style.color = "#28a745"; // Green color
     } else {
-        feedbactextContent = "That's incorrect. Try again!";
-        feedback.style.color = "#dc3545";
+        feedback.textContent = "That's incorrect. Try again!";
+        feedback.style.color = "#dc3545"; // Red color
     }
 }
 
-// Add event listener to the submit button
-document.getElementById("submit-answer").addEventListener("click", checkAnswer);
+// Attach event listener to the submit button
+const submitButton = document.getElementById("submit-answer");
+submitButton.addEventListener("click", checkAnswer);
